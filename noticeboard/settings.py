@@ -8,7 +8,9 @@ from datetime import timedelta
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Security settings
-SECRET_KEY = os.getenv('SECRET_KEY', 'your-secret-key-1234567890')  # Change for production
+
+
+SECRET_KEY = os.environ.get('@2^zbd%vyp*!uem7n20hn^d7((50$kmuyp*jju)9z*#y!c0l%l', 'dev-secret-key')
 DEBUG = os.getenv('DEBUG', 'True') == 'False'
 ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = ['https://church_noticeboard.onrender.com']
@@ -90,20 +92,14 @@ TEMPLATES = [
     },
 ]
 
-# Database configuration (SQLite for local dev, update for production)
-DATABASES = {
-    'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL'),
-        conn_max_age=600,
-        conn_health_checks=True,
-    )
-}
 
+DATABASES = {'default': dj_database_url.config(default='sqlite:///db.sqlite3')}
 
 # Static and media file settings
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
