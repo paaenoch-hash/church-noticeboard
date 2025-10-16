@@ -28,7 +28,7 @@ INSTALLED_APPS = [
     'channels',
     'notice',
     'whitenoise.runserver_nostatic',
-    'django.contrib.staticfiles',
+    
 ]
 
 ROOT_URLCONF = 'noticeboard.urls'
