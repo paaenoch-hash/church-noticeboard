@@ -51,6 +51,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
     "http://127.0.0.1:5173",
     'https://ttagnoticeboard.info',
+    "https://www.ttagnoticeboard.info",
     'https://noticeboard-ui.vercel.app',  # Update after Vercel deployment
 ]
 CORS_ALLOW_CREDENTIALS = True
